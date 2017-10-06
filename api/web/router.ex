@@ -7,12 +7,6 @@ defmodule SlackClone.Router do
     plug Guardian.Plug.LoadResource
   end
 
-  scope "/", SlackClone do
-    pipe_through :browser
-
-    get "/", PageController, :index
-  end
-
   scope "/api", SlackClone do
     pipe_through :api
 

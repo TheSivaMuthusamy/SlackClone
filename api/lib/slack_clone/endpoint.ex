@@ -36,5 +36,7 @@ defmodule SlackClone.Endpoint do
     key: "_slack_clone_key",
     signing_salt: "pW6jMwh2"
 
+  plug CORSPlug  
+  
   plug SlackClone.Router
 end
