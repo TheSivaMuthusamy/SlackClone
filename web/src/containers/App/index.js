@@ -53,5 +53,5 @@ export default connect(
     isAuthenticated: state.session.isAuthenticated,
     willAuthenticate: state.session.willAuthenticate,
   }),
-  { authenticate, unauthenticate }
+  { authenticate, unauthenticate },
 )(App);

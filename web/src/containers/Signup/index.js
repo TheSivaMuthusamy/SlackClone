@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signup } from '../../actions/session';
 import SignupForm from '../../components/SignupForm';
@@ -9,7 +9,6 @@ type Props = {
 }
 
 class Signup extends Component {
-
   props: Props
 
   handleSignup = data => this.props.signup(data, this.props.history);
