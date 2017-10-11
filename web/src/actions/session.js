@@ -1,9 +1,12 @@
 import { reset } from 'redux-form';
+import { push } from 'react-router-redux';
+import { fetchUserRooms } from './rooms';
 import api from '../api';
 
 function setCurrentUser(dispatch, response) {
   localStorage.setItem('token', JSON.stringify(response.meta.token));
   dispatch({ type: 'AUTHENTICATION_SUCCESS', response });
+  dispatch(fetchUserRooms(response.data.id));
 }
 
 export function login(data, history) {
@@ -24,12 +27,12 @@ export function signup(data, history) {
     });
 }
 
-export function logout(history) {
+export function logout() {
   return dispatch => api.delete('/sessions')
     .then(() => {
       localStorage.removeItem('token');
       dispatch({ type: 'LOGOUT' });
-      history.push('/login');
+      dispatch(push('/some/path'));
     });
 }
 
