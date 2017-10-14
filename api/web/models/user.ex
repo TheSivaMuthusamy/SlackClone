@@ -7,6 +7,7 @@ defmodule SlackClone.User do
     field :password_hash, :string
     field :password, :string, virtual: true
     many_to_many :rooms, SlackClone.Room, join_through: "user_rooms"
+    has_many :messages, SlackClone.Message
 
     timestamps()
   end

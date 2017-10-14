@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -41,22 +42,20 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <div>
-          <div style={{ display: 'flex', flex: '1' }}>
-            {isAuthenticated &&
+        <div style={{ display: 'flex', flex: '1' }}>
+           {isAuthenticated &&
                 <Sidebar
                   rooms={currentUserRooms}
                   onLogoutClick={this.handleLogout}
                 />
-            }
-            <Switch>
-              <MatchAuthenticated exact path="/" component={Home} {...authProps} />
-              <RedirectAuthenticated path="/login" component={Login} {...authProps} />
-              <RedirectAuthenticated path="/signup" component={Signup} {...authProps} />
-              <MatchAuthenticated path="/r/:id" component={Room} {...authProps} />
-              <Route component={NotFound} />
-            </Switch>
-          </div>
+          }
+          <Switch>
+            <MatchAuthenticated exact path="/" component={Home} {...authProps} />
+            <RedirectAuthenticated path="/login" component={Login} {...authProps} />
+            <RedirectAuthenticated path="/signup" component={Signup} {...authProps} />
+            <MatchAuthenticated path="/r/:id" component={Room} {...authProps} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </BrowserRouter>
     );

@@ -20,7 +20,7 @@ defmodule SlackClone.Mixfile do
   def application do
     [
       mod: {SlackClone, []},
-      extra_applications: [:logger]
+      extra_applications: [:logger],
     ]
   end
 
@@ -42,6 +42,7 @@ defmodule SlackClone.Mixfile do
       {:comeonin, "~> 2.5"},
       {:guardian, "~> 0.14"},
       {:cors_plug, "~> 1.1"},
+      {:scrivener_ecto, "~> 1.0"}
     ]
   end
 

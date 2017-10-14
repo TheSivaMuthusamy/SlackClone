@@ -5,6 +5,7 @@ defmodule SlackClone.Room do
     field :name, :string
     field :topic, :string
     many_to_many :users, SlackClone.User, join_through: "user_rooms"
+    has_many :messages, SlackClone.Message
 
     timestamps()
   end
