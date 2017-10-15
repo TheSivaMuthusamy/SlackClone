@@ -14,6 +14,7 @@ defmodule SlackClone do
       supervisor(SlackClone.Endpoint, []),
       # Start your own worker by calling: SlackClone.Worker.start_link(arg1, arg2, arg3)
       # worker(SlackClone.Worker, [arg1, arg2, arg3]),
+      supervisor(SlackClone.Presence, []),
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

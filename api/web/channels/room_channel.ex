@@ -17,7 +17,16 @@ defmodule SlackClone.RoomChannel do
       pagination: SlackClone.PaginationHelpers.pagination(page)
     }
 
+    send(self, :after_join)
     {:ok, response, assign(socket, :room, room)}
+  end
+
+  def handle_info(:after_join, socket) do
+    SlackClone.Presence.track(socket, socket.assigns.current_user.id, %{
+      user: Phoenix.View.render_one(socket.assigns.current_user, SlackClone.UserView, "user.json")
+    })
+    push(socket, "presence_state", SlackClone.Presence.list(socket))
+    {:noreply, socket}
   end
 
   def handle_in("new_message", params, socket) do

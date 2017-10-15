@@ -15,7 +15,9 @@ defmodule SlackClone.Router do
     post "/sessions/refresh", SessionController, :refresh
     resources "/users", UserController, only: [:create]
     get "/users/:id/rooms", UserController, :rooms
-    resources "/rooms", RoomController, only: [:index, :create]
+    resources "/rooms", RoomController, only: [:index, :create] do
+      resources "/messages", MessageController, only: [:index]
+    end
     post "/rooms/:id/join", RoomController, :join
   end
 end

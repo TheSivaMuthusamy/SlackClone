@@ -1,6 +1,13 @@
 defmodule SlackClone.MessageView do
   use SlackClone.Web, :view
 
+  def render("index.json", %{messages: messages, pagination: pagination}) do
+    %{
+      data: render_many(messages, SlackClone.MessageView, "message.json"),
+      pagination: pagination
+    }
+  end
+
   def render("message.json", %{message: message}) do
     %{
       id: message.id,
