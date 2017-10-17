@@ -4,11 +4,8 @@ A slack-like chat application with a Phoenix backend and a React front end. Chec
 
 ---
 
-###  Installation
+###  Local Installation
 
-- `npm install`
-- `npm run electron`
-
----
-
-Builds have also been added if you don't want to install. Just choose the correct build for your OS in the build folder.
+- `npm, node, Elxir, and Phoenix must be installed`
+- from the api directory `mix phx.server`
+- from the web directory `npm run start`
